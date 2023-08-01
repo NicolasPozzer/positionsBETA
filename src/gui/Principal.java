@@ -373,7 +373,7 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc.setText("BTC");
+        btnBtc.setText("BTCbig");
         btnBtc.setBorderPainted(false);
         btnBtc.setFocusPainted(false);
         btnBtc.addActionListener(new java.awt.event.ActionListener() {
@@ -465,7 +465,7 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc4.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc4.setText("ETH");
+        btnBtc4.setText("DOW");
         btnBtc4.setBorderPainted(false);
         btnBtc4.setFocusPainted(false);
         btnBtc4.addActionListener(new java.awt.event.ActionListener() {
@@ -556,8 +556,8 @@ private Moneda encontrarMonedaPorId(int id) {
         });
 
         btnBtc8.setBackground(new java.awt.Color(186, 186, 186));
-        btnBtc8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc8.setText("DOW");
+        btnBtc8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnBtc8.setText("BTCsmall");
         btnBtc8.setBorderPainted(false);
         btnBtc8.setFocusPainted(false);
         btnBtc8.addActionListener(new java.awt.event.ActionListener() {
