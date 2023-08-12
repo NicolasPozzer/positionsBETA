@@ -51,73 +51,73 @@ public class Principal extends javax.swing.JFrame {
         // Luego, guardar la lista en el archivo JSON.
         Moneda moneda1 = new Moneda();
         moneda1.setID(1);
-        moneda1.setNombre("Bitcoin");
+        moneda1.setNombre("BTC");
         moneda1.setPosicion(0);
         moneda1.setEstadoDePosicion(0);
 
         Moneda moneda2 = new Moneda();
         moneda2.setID(2);
-        moneda2.setNombre("Ethereum");
+        moneda2.setNombre("ETH");
         moneda2.setPosicion(0);
         moneda2.setEstadoDePosicion(0);
 
         Moneda moneda3 = new Moneda();
         moneda3.setID(3);
-        moneda3.setNombre("Litecoin");
+        moneda3.setNombre("Gold");
         moneda3.setPosicion(0);
         moneda3.setEstadoDePosicion(0);
         
         Moneda moneda4 = new Moneda();
         moneda4.setID(4);
-        moneda4.setNombre("Litecoin");
+        moneda4.setNombre("EUR/USD");
         moneda4.setPosicion(0);
         moneda4.setEstadoDePosicion(0);
         
         Moneda moneda5 = new Moneda();
         moneda5.setID(5);
-        moneda5.setNombre("Litecoin");
+        moneda5.setNombre("S&P");
         moneda5.setPosicion(0);
         moneda5.setEstadoDePosicion(0);
         
         Moneda moneda6 = new Moneda();
         moneda6.setID(6);
-        moneda6.setNombre("Litecoin");
+        moneda6.setNombre("Silver");
         moneda6.setPosicion(0);
         moneda6.setEstadoDePosicion(0);
         
         Moneda moneda7 = new Moneda();
         moneda7.setID(7);
-        moneda7.setNombre("Litecoin");
+        moneda7.setNombre("DOW");
         moneda7.setPosicion(0);
         moneda7.setEstadoDePosicion(0);
         
         Moneda moneda8 = new Moneda();
         moneda8.setID(8);
-        moneda8.setNombre("Litecoin");
+        moneda8.setNombre("DAX");
         moneda8.setPosicion(0);
         moneda8.setEstadoDePosicion(0);
         
         Moneda moneda9 = new Moneda();
         moneda9.setID(9);
-        moneda9.setNombre("Litecoin");
+        moneda9.setNombre("OIL");
         moneda9.setPosicion(0);
         moneda9.setEstadoDePosicion(0);
         
         Moneda moneda10 = new Moneda();
         moneda10.setID(10);
-        moneda10.setNombre("Litecoin");
+        moneda10.setNombre("R2K");
         moneda10.setPosicion(0);
         moneda10.setEstadoDePosicion(0);
         
         Moneda moneda11 = new Moneda();
         moneda11.setID(11);
-        moneda11.setNombre("Litecoin");
+        moneda11.setNombre("AAPL");
         moneda11.setPosicion(0);
         moneda11.setEstadoDePosicion(0);
         
         Moneda moneda12 = new Moneda();
         moneda12.setID(12);
-        moneda12.setNombre("Litecoin");
+        moneda12.setNombre("XRP");
         moneda12.setPosicion(0);
         moneda12.setEstadoDePosicion(0);
 
@@ -165,9 +165,16 @@ private Moneda encontrarMonedaPorId(int id) {
         // Actualiza el estado de los botones en tu interfaz gráfica según la lista de monedas
         // Recorre la lista y ajusta el estado de cada botón.
         for (Moneda moneda : monedas) {
+            
+            
+            
+            
             int id = moneda.getID();
             int estadoDePosicion = moneda.getEstadoDePosicion();
+            
+            
             JButton boton = encontrarBotonPorId(id);
+            boton.setText(moneda.getNombre());
             
             switch (estadoDePosicion) {
                 case 0:
@@ -190,6 +197,7 @@ private Moneda encontrarMonedaPorId(int id) {
     private void actualizarMoneda(int id) {
     // Encuentra la moneda correspondiente al ID en la lista de monedas
     Moneda moneda = encontrarMonedaPorId(id);
+    
     
     // Actualiza el estado de la moneda
     int estadoDePosicion = moneda.getEstadoDePosicion();
@@ -214,7 +222,8 @@ private Moneda encontrarMonedaPorId(int id) {
             int id = moneda.getID();
             int posicion = moneda.getPosicion();
             JButton boton = encontrarStateBotonPorId(id);
-
+            
+            
             switch (posicion) {
                 case 0:
                     boton.setText("Desbalanced");
@@ -239,6 +248,7 @@ private Moneda encontrarMonedaPorId(int id) {
     int posicion = moneda.getPosicion();
     posicion = (posicion + 1) % 2; // Cambia el estado cíclicamente entre 0, 1 y 2
     moneda.setPosicion(posicion);
+    
 }
 
     
@@ -373,7 +383,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc.setText("BTCbig");
         btnBtc.setBorderPainted(false);
         btnBtc.setFocusPainted(false);
         btnBtc.addActionListener(new java.awt.event.ActionListener() {
@@ -396,7 +405,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc1.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc1.setText("Gold");
         btnBtc1.setBorderPainted(false);
         btnBtc1.setFocusPainted(false);
         btnBtc1.addActionListener(new java.awt.event.ActionListener() {
@@ -419,7 +427,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc2.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc2.setText("S&P");
         btnBtc2.setBorderPainted(false);
         btnBtc2.setFocusPainted(false);
         btnBtc2.addActionListener(new java.awt.event.ActionListener() {
@@ -442,7 +449,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc3.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBtc3.setText("EUR/USD");
         btnBtc3.setBorderPainted(false);
         btnBtc3.setFocusPainted(false);
         btnBtc3.addActionListener(new java.awt.event.ActionListener() {
@@ -465,7 +471,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc4.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc4.setText("DOW");
         btnBtc4.setBorderPainted(false);
         btnBtc4.setFocusPainted(false);
         btnBtc4.addActionListener(new java.awt.event.ActionListener() {
@@ -488,7 +493,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc5.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc5.setText("DAX");
         btnBtc5.setBorderPainted(false);
         btnBtc5.setFocusPainted(false);
         btnBtc5.addActionListener(new java.awt.event.ActionListener() {
@@ -511,7 +515,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc6.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc6.setText("OIL");
         btnBtc6.setBorderPainted(false);
         btnBtc6.setFocusPainted(false);
         btnBtc6.addActionListener(new java.awt.event.ActionListener() {
@@ -534,7 +537,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc7.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc7.setText("Silver");
         btnBtc7.setBorderPainted(false);
         btnBtc7.setFocusPainted(false);
         btnBtc7.addActionListener(new java.awt.event.ActionListener() {
@@ -556,8 +558,7 @@ private Moneda encontrarMonedaPorId(int id) {
         });
 
         btnBtc8.setBackground(new java.awt.Color(186, 186, 186));
-        btnBtc8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBtc8.setText("BTCsmall");
+        btnBtc8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnBtc8.setBorderPainted(false);
         btnBtc8.setFocusPainted(false);
         btnBtc8.addActionListener(new java.awt.event.ActionListener() {
@@ -580,7 +581,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc9.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc9.setText("R2K");
         btnBtc9.setBorderPainted(false);
         btnBtc9.setFocusPainted(false);
         btnBtc9.addActionListener(new java.awt.event.ActionListener() {
@@ -603,7 +603,6 @@ private Moneda encontrarMonedaPorId(int id) {
 
         btnBtc10.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc10.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnBtc10.setText("AAPL");
         btnBtc10.setBorderPainted(false);
         btnBtc10.setFocusPainted(false);
         btnBtc10.addActionListener(new java.awt.event.ActionListener() {
@@ -625,8 +624,7 @@ private Moneda encontrarMonedaPorId(int id) {
         });
 
         btnBtc11.setBackground(new java.awt.Color(186, 186, 186));
-        btnBtc11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBtc11.setText("ALTCOIN");
+        btnBtc11.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnBtc11.setBorderPainted(false);
         btnBtc11.setFocusPainted(false);
         btnBtc11.addActionListener(new java.awt.event.ActionListener() {
@@ -838,7 +836,9 @@ private Moneda encontrarMonedaPorId(int id) {
 
 
     private void btnBtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcActionPerformed
+
     actualizarMoneda(1); // El ID 1 representa el botón btnBtc
+    
     guardarMonedasEnJson();
     actualizarBotones();
 
@@ -853,7 +853,7 @@ private Moneda encontrarMonedaPorId(int id) {
     }//GEN-LAST:event_btnBtcStateActionPerformed
 
     private void btnBtc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc1ActionPerformed
-        actualizarMoneda(2); // El ID 1 representa el botón btnBtc
+    actualizarMoneda(2); // El ID 1 representa el botón btnBtc
     guardarMonedasEnJson();
     actualizarBotones();
 
