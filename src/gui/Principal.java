@@ -8,8 +8,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.JButton;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+
 
 
 public class Principal extends javax.swing.JFrame{
@@ -19,7 +18,6 @@ public class Principal extends javax.swing.JFrame{
 
     public Principal() {
         initComponents();
-        lbfecha.setText(fecha());
         leerArchivoJson();
         actualizarBotones();
         actualizarStateBotones();
@@ -377,8 +375,6 @@ private Moneda encontrarMonedaPorId(int id) {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        lbfecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -771,24 +767,6 @@ private Moneda encontrarMonedaPorId(int id) {
         jRadioButton1.setSelected(true);
         jRadioButton1.setEnabled(false);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        jComboBox1.setMaximumRowCount(33);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day AT", "HTF levels", "MonkeyBars", "CCW" }));
-        jComboBox1.setToolTipText("");
-        jComboBox1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox1.setFocusable(false);
-        jComboBox1.setKeySelectionManager(null);
-        jComboBox1.setLightWeightPopupEnabled(false);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        lbfecha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbfecha.setText("DD/MM/YYYY");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -798,9 +776,7 @@ private Moneda encontrarMonedaPorId(int id) {
                 .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addGap(38, 298, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -808,9 +784,7 @@ private Moneda encontrarMonedaPorId(int id) {
                         .addComponent(jSeparator2)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lbfecha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 400, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(14, 14, 14))))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -827,12 +801,8 @@ private Moneda encontrarMonedaPorId(int id) {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
@@ -844,10 +814,8 @@ private Moneda encontrarMonedaPorId(int id) {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lbfecha)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1022,20 +990,6 @@ private Moneda encontrarMonedaPorId(int id) {
     actualizarStateBotones();
     }//GEN-LAST:event_btnBtcState11ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    
-    public static String fecha(){
-        Date fecha=new Date();
-        SimpleDateFormat formatofecha=new SimpleDateFormat("dd/MM/YYYY");
-        return formatofecha.format(fecha);
-    }
-    
-    
-    
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBtc;
@@ -1062,7 +1016,6 @@ private Moneda encontrarMonedaPorId(int id) {
     private javax.swing.JButton btnBtcState7;
     private javax.swing.JButton btnBtcState8;
     private javax.swing.JButton btnBtcState9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -1070,7 +1023,6 @@ private Moneda encontrarMonedaPorId(int id) {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lbfecha;
     // End of variables declaration//GEN-END:variables
 
     
