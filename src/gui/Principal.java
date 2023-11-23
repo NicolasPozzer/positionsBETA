@@ -1,4 +1,3 @@
-
 package gui;
 
 import java.awt.Color;
@@ -9,15 +8,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.JButton;
 
+public class Principal extends javax.swing.JFrame {
 
+    int estadoCandado = 0;
 
-public class Principal extends javax.swing.JFrame{
-    
-    
     private List<Moneda> monedas = new ArrayList<>();
 
     public Principal() {
         initComponents();
+
+        bloquear.setVisible(false);
+
         leerArchivoJson();
         actualizarBotones();
         actualizarStateBotones();
@@ -31,7 +32,8 @@ public class Principal extends javax.swing.JFrame{
 
             if (archivoJson.exists()) {
                 // Si el archivo existe, lo leemos y cargamos la lista de monedas
-                monedas = objectMapper.readValue(archivoJson, new TypeReference<List<Moneda>>() {});
+                monedas = objectMapper.readValue(archivoJson, new TypeReference<List<Moneda>>() {
+                });
             } else {
                 // Si el archivo no existe, inicializamos la lista de monedas
                 inicializarMonedas();
@@ -41,12 +43,9 @@ public class Principal extends javax.swing.JFrame{
         }
     }
 
-    
-    
-    
-/*=====================================================
+    /*=====================================================
 ===Se ejecuta solo si NO hay ARCHIVO JSON EXISTENTE====
-=========================vvvvvv========================   */ 
+=========================vvvvvv========================   */
     private void inicializarMonedas() {
         // Aquí puedes inicializar la lista de monedas según la cantidad de botones que tengas en tu interfaz
         // Por ejemplo, si tienes 3 botones, puedes agregar 3 instancias de Moneda a la lista y configurar sus propiedades.
@@ -68,55 +67,55 @@ public class Principal extends javax.swing.JFrame{
         moneda3.setNombre("Gold");
         moneda3.setPosicion(0);
         moneda3.setEstadoDePosicion(0);
-        
+
         Moneda moneda4 = new Moneda();
         moneda4.setID(4);
         moneda4.setNombre("EUR/USD");
         moneda4.setPosicion(0);
         moneda4.setEstadoDePosicion(0);
-        
+
         Moneda moneda5 = new Moneda();
         moneda5.setID(5);
         moneda5.setNombre("S&P");
         moneda5.setPosicion(0);
         moneda5.setEstadoDePosicion(0);
-        
+
         Moneda moneda6 = new Moneda();
         moneda6.setID(6);
         moneda6.setNombre("Silver");
         moneda6.setPosicion(0);
         moneda6.setEstadoDePosicion(0);
-        
+
         Moneda moneda7 = new Moneda();
         moneda7.setID(7);
         moneda7.setNombre("DOW");
         moneda7.setPosicion(0);
         moneda7.setEstadoDePosicion(0);
-        
+
         Moneda moneda8 = new Moneda();
         moneda8.setID(8);
         moneda8.setNombre("DAX");
         moneda8.setPosicion(0);
         moneda8.setEstadoDePosicion(0);
-        
+
         Moneda moneda9 = new Moneda();
         moneda9.setID(9);
         moneda9.setNombre("OIL");
         moneda9.setPosicion(0);
         moneda9.setEstadoDePosicion(0);
-        
+
         Moneda moneda10 = new Moneda();
         moneda10.setID(10);
         moneda10.setNombre("R2K");
         moneda10.setPosicion(0);
         moneda10.setEstadoDePosicion(0);
-        
+
         Moneda moneda11 = new Moneda();
         moneda11.setID(11);
         moneda11.setNombre("AAPL");
         moneda11.setPosicion(0);
         moneda11.setEstadoDePosicion(0);
-        
+
         Moneda moneda12 = new Moneda();
         moneda12.setID(12);
         moneda12.setNombre("XRP");
@@ -138,85 +137,62 @@ public class Principal extends javax.swing.JFrame{
 
         guardarMonedasEnJson();
     }
-    
-    
-    
-    
 
-    
-
-
-    
-/*=====================================================
+    /*=====================================================
 ========TIPO DE ORDEN-ABIERTA-EN-ESPERA-CERRADA========
-=======================================================   */     
-
-    
-    
-private Moneda encontrarMonedaPorId(int id) {
-    // Encuentra la moneda correspondiente al ID en la lista de monedas
-    for (Moneda moneda : monedas) {
-        if (moneda.getID() == id) {
-            return moneda;
+=======================================================   */
+    private Moneda encontrarMonedaPorId(int id) {
+        // Encuentra la moneda correspondiente al ID en la lista de monedas
+        for (Moneda moneda : monedas) {
+            if (moneda.getID() == id) {
+                return moneda;
+            }
         }
+        return null; // Retorna null si no se encuentra la moneda con el ID especificado
     }
-    return null; // Retorna null si no se encuentra la moneda con el ID especificado
-}
 
     private void actualizarBotones() {
+
         // Actualiza el estado de los botones en tu interfaz gráfica según la lista de monedas
         // Recorre la lista y ajusta el estado de cada botón.
         for (Moneda moneda : monedas) {
-            
-            
-            
-            
+
             int id = moneda.getID();
             int estadoDePosicion = moneda.getEstadoDePosicion();
-            
-            
+
             JButton boton = encontrarBotonPorId(id);
             boton.setText(moneda.getNombre());
-            
+
             switch (estadoDePosicion) {
                 case 0:
-                    boton.setBackground(new Color(186,186,186)); // Gris
-                    
+                    boton.setBackground(new Color(186, 186, 186)); // Gris
+
                     break;
                 case 1:
                     boton.setBackground(Color.orange); // Naranja
-                    
+
                     break;
                 case 2:
-                    boton.setBackground(new Color(132,208,55)); // Verde
-                    
+                    boton.setBackground(new Color(132, 208, 55)); // Verde
+
                     break;
             }
         }
     }
-    
-    
-    private void actualizarMoneda(int id) {
-    // Encuentra la moneda correspondiente al ID en la lista de monedas
-    Moneda moneda = encontrarMonedaPorId(id);
-    
-    
-    // Actualiza el estado de la moneda
-    int estadoDePosicion = moneda.getEstadoDePosicion();
-    estadoDePosicion = (estadoDePosicion + 1) % 3; // Cambia el estado cíclicamente entre 0, 1 y 2
-    moneda.setEstadoDePosicion(estadoDePosicion);
-}
-    
 
-    
-    
-/*=====================================================
+    private void actualizarMoneda(int id) {
+        // Encuentra la moneda correspondiente al ID en la lista de monedas
+        Moneda moneda = encontrarMonedaPorId(id);
+
+        // Actualiza el estado de la moneda
+        int estadoDePosicion = moneda.getEstadoDePosicion();
+        estadoDePosicion = (estadoDePosicion + 1) % 3; // Cambia el estado cíclicamente entre 0, 1 y 2
+        moneda.setEstadoDePosicion(estadoDePosicion);
+    }
+
+    /*=====================================================
 ===================BALANCEADO/DESBALANCEADO============
-=======================================================   */   
-  
-    
-    
-        
+=======================================================   */
     private void actualizarStateBotones() {
         // Actualiza el estado de los botones en tu interfaz gráfica según la lista de monedas
         // Recorre la lista y ajusta el estado de cada botón.
@@ -224,38 +200,34 @@ private Moneda encontrarMonedaPorId(int id) {
             int id = moneda.getID();
             int posicion = moneda.getPosicion();
             JButton boton = encontrarStateBotonPorId(id);
-            
-            
+
             switch (posicion) {
                 case 0:
                     boton.setText("Desbalanced");
-                    boton.setBackground(new Color(252,99,86)); // Gris
-                     
+                    boton.setBackground(new Color(252, 99, 86)); // Gris
+
                     break;
-                
+
                 case 1:
                     boton.setText("Balanced");
                     boton.setBackground(Color.green); // Verde
-                    
+
                     break;
             }
         }
     }
-    
-    private void actualizarEstadoMoneda(int id) {
-    // Encuentra la moneda correspondiente al ID en la lista de monedas
-    Moneda moneda = encontrarMonedaPorId(id);
-    
-    // Actualiza el estado de la moneda
-    int posicion = moneda.getPosicion();
-    posicion = (posicion + 1) % 2; // Cambia el estado cíclicamente entre 0, 1 y 2
-    moneda.setPosicion(posicion);
-    
-}
 
-    
-    
-    
+    private void actualizarEstadoMoneda(int id) {
+        // Encuentra la moneda correspondiente al ID en la lista de monedas
+        Moneda moneda = encontrarMonedaPorId(id);
+
+        // Actualiza el estado de la moneda
+        int posicion = moneda.getPosicion();
+        posicion = (posicion + 1) % 2; // Cambia el estado cíclicamente entre 0, 1 y 2
+        moneda.setPosicion(posicion);
+
+    }
+
     private JButton encontrarBotonPorId(int id) {
         // Implementa la lógica para encontrar el botón correspondiente al ID en tu interfaz gráfica.
         // Por ejemplo, si el ID 1 representa btnBtc, debes devolver btnBtc.
@@ -289,9 +261,7 @@ private Moneda encontrarMonedaPorId(int id) {
                 return null;
         }
     }
-    
-   
-    
+
     private JButton encontrarStateBotonPorId(int id) {
         // Implementa la lógica para encontrar el botón correspondiente al ID en tu interfaz gráfica.
         // Por ejemplo, si el ID 1 representa btnBtc, debes devolver btnBtc.
@@ -337,9 +307,6 @@ private Moneda encontrarMonedaPorId(int id) {
         }
     }
 
-
-   
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -381,6 +348,8 @@ private Moneda encontrarMonedaPorId(int id) {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        candado = new javax.swing.JButton();
+        bloquear = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -790,6 +759,24 @@ private Moneda encontrarMonedaPorId(int id) {
 
         jLabel8.setText("Open");
 
+        candado.setIcon(new javax.swing.ImageIcon("Z:\\YoProgramo\\Aprendiendo JAVA\\MisProyectosJAVA\\positionsBETA\\src\\img\\block.png")); // NOI18N
+        candado.setBorder(null);
+        candado.setFocusCycleRoot(true);
+        candado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                candadoActionPerformed(evt);
+            }
+        });
+
+        bloquear.setIcon(new javax.swing.ImageIcon("Z:\\YoProgramo\\Aprendiendo JAVA\\MisProyectosJAVA\\positionsBETA\\src\\img\\unlock.png")); // NOI18N
+        bloquear.setBorder(null);
+        bloquear.setFocusCycleRoot(true);
+        bloquear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bloquearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -799,7 +786,9 @@ private Moneda encontrarMonedaPorId(int id) {
                 .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(candado)
+                .addGap(77, 77, 77)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -810,12 +799,17 @@ private Moneda encontrarMonedaPorId(int id) {
                     .addComponent(jLabel7)
                     .addComponent(jLabel6)
                     .addComponent(jLabel8))
-                .addGap(42, 42, 42))
+                .addGap(22, 22, 22))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addContainerGap(312, Short.MAX_VALUE)
+                    .addComponent(bloquear)
+                    .addGap(170, 170, 170)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
@@ -836,7 +830,7 @@ private Moneda encontrarMonedaPorId(int id) {
                         .addGap(12, 12, 12)
                         .addComponent(jLabel7))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                        .addGap(13, 13, 13)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -844,8 +838,15 @@ private Moneda encontrarMonedaPorId(int id) {
                         .addComponent(jLabel8))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(candado)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 7, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addContainerGap(64, Short.MAX_VALUE)
+                    .addComponent(bloquear)
+                    .addContainerGap()))
         );
 
         jLabel2.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
@@ -873,12 +874,11 @@ private Moneda encontrarMonedaPorId(int id) {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -888,7 +888,7 @@ private Moneda encontrarMonedaPorId(int id) {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -913,162 +913,233 @@ private Moneda encontrarMonedaPorId(int id) {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-
-
 
     private void btnBtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcActionPerformed
-
-    actualizarMoneda(1); // El ID 1 representa el botón btnBtc
-    
-    guardarMonedasEnJson();
-    actualizarBotones();
-
+        if (estadoCandado == 1) {
+            actualizarMoneda(1); // El ID 1 representa el botón btnBtc
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtcActionPerformed
 
 
-      
     private void btnBtcStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcStateActionPerformed
-    actualizarEstadoMoneda(1); // El ID 1 representa el botón btnBtcState
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(1); // El ID 1 representa el botón btnBtcState
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcStateActionPerformed
 
     private void btnBtc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc1ActionPerformed
-    actualizarMoneda(2); // El ID 1 representa el botón btnBtc
-    guardarMonedasEnJson();
-    actualizarBotones();
-
+        if (estadoCandado == 1) {
+            actualizarMoneda(2); // El ID 1 representa el botón btnBtc
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc1ActionPerformed
 
     private void btnBtcState1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState1ActionPerformed
-    actualizarEstadoMoneda(2); // El ID 1 representa el botón btnBtcState
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(2); // El ID 1 representa el botón btnBtcState
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState1ActionPerformed
 
     private void btnBtc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc2ActionPerformed
-    actualizarMoneda(3); // El ID 1 representa el botón btnBtc
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(3); // El ID 1 representa el botón btnBtc
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc2ActionPerformed
 
     private void btnBtcState2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState2ActionPerformed
-    actualizarEstadoMoneda(3); // El ID 1 representa el botón btnBtcState
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(3); // El ID 1 representa el botón btnBtcState
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState2ActionPerformed
 
     private void btnBtc3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc3ActionPerformed
-    actualizarMoneda(4); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(4);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc3ActionPerformed
 
     private void btnBtcState3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState3ActionPerformed
-    actualizarEstadoMoneda(4); // El ID 1 representa el botón btnBtcState
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(4); // El ID 1 representa el botón btnBtcState
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState3ActionPerformed
 
     private void btnBtc4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc4ActionPerformed
-    actualizarMoneda(5); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(5);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc4ActionPerformed
 
     private void btnBtcState4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState4ActionPerformed
-    actualizarEstadoMoneda(5); // El ID 1 representa el botón btnBtcState
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(5); // El ID 1 representa el botón btnBtcState
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState4ActionPerformed
 
     private void btnBtc5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc5ActionPerformed
-    actualizarMoneda(6); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(6);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc5ActionPerformed
 
     private void btnBtcState5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState5ActionPerformed
-    actualizarEstadoMoneda(6); // El ID 1 representa el botón btnBtcState
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(6); // El ID 1 representa el botón btnBtcState
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState5ActionPerformed
 
     private void btnBtc6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc6ActionPerformed
-    actualizarMoneda(7); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(7);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc6ActionPerformed
 
     private void btnBtcState6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState6ActionPerformed
-    actualizarEstadoMoneda(7);
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(7);
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState6ActionPerformed
 
     private void btnBtc7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc7ActionPerformed
-    actualizarMoneda(8); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(8);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc7ActionPerformed
 
     private void btnBtcState7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState7ActionPerformed
-    actualizarEstadoMoneda(8);
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(8);
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState7ActionPerformed
 
     private void btnBtc8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc8ActionPerformed
-    actualizarMoneda(9); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(9);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc8ActionPerformed
 
     private void btnBtcState8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState8ActionPerformed
-    actualizarEstadoMoneda(9);
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(9);
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState8ActionPerformed
 
     private void btnBtc9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc9ActionPerformed
-    actualizarMoneda(10); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(10);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc9ActionPerformed
 
     private void btnBtcState9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState9ActionPerformed
-    actualizarEstadoMoneda(10);
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(10);
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState9ActionPerformed
 
     private void btnBtc10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc10ActionPerformed
-    actualizarMoneda(11); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(11);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc10ActionPerformed
 
     private void btnBtcState10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState10ActionPerformed
-    actualizarEstadoMoneda(11);
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(11);
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState10ActionPerformed
 
     private void btnBtc11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtc11ActionPerformed
-    actualizarMoneda(12); 
-    guardarMonedasEnJson();
-    actualizarBotones();
+        if (estadoCandado == 1) {
+            actualizarMoneda(12);
+            guardarMonedasEnJson();
+            actualizarBotones();
+        }
     }//GEN-LAST:event_btnBtc11ActionPerformed
 
     private void btnBtcState11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBtcState11ActionPerformed
-    actualizarEstadoMoneda(12);
-    guardarMonedasEnJson();
-    actualizarStateBotones();
+        if (estadoCandado == 1) {
+            actualizarEstadoMoneda(12);
+            guardarMonedasEnJson();
+            actualizarStateBotones();
+        }
     }//GEN-LAST:event_btnBtcState11ActionPerformed
 
+    
+    
+    /*=================CANDADO=================*/
+    
+    private void candadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_candadoActionPerformed
+        candado.setVisible(false);
+        bloquear.setVisible(true);
+        estadoCandado = 1;
+        
+        //cambio de titulo
+        jLabel1.setText("Modifing...");
+        jPanel1.setBackground(Color.orange);
+        jPanel3.setBackground(Color.orange);
+        jPanel4.setBackground(Color.orange);
+        jSeparator1.setBackground(Color.orange);
+        jSeparator2.setBackground(Color.orange);
+    }//GEN-LAST:event_candadoActionPerformed
+
+    private void bloquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloquearActionPerformed
+        bloquear.setVisible(false);
+        estadoCandado = 0;
+        candado.setVisible(true);
+        jLabel1.setText("Positions");
+        jPanel1.setBackground(new Color(242, 242, 242));
+        jPanel3.setBackground(new Color(242, 242, 242));
+        jPanel4.setBackground(new Color(242, 242, 242));
+        jSeparator1.setBackground(new Color(242, 242, 242));
+        jSeparator2.setBackground(new Color(242, 242, 242));
+    }//GEN-LAST:event_bloquearActionPerformed
+/*============================================*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bloquear;
     private javax.swing.JButton btnBtc;
     private javax.swing.JButton btnBtc1;
     private javax.swing.JButton btnBtc10;
@@ -1093,6 +1164,7 @@ private Moneda encontrarMonedaPorId(int id) {
     private javax.swing.JButton btnBtcState7;
     private javax.swing.JButton btnBtcState8;
     private javax.swing.JButton btnBtcState9;
+    private javax.swing.JButton candado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1110,5 +1182,4 @@ private Moneda encontrarMonedaPorId(int id) {
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
-    
 }
