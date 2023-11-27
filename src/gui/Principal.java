@@ -354,8 +354,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setEnabled(false);
+
+        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         btnBtc.setBackground(new java.awt.Color(186, 186, 186));
         btnBtc.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -735,10 +742,17 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
+
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+
+        jRadioButton1.setBackground(new java.awt.Color(51, 51, 51));
         jRadioButton1.setSelected(true);
         jRadioButton1.setEnabled(false);
 
+        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 2, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Positions");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -753,12 +767,16 @@ public class Principal extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(158, 225, 80));
         jLabel5.setText("-");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("off");
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Waiting..");
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Open");
 
+        candado.setBackground(new java.awt.Color(51, 51, 51));
         candado.setIcon(new javax.swing.ImageIcon("Z:\\YoProgramo\\Aprendiendo JAVA\\MisProyectosJAVA\\positionsBETA\\src\\img\\block.png")); // NOI18N
         candado.setBorder(null);
         candado.setFocusCycleRoot(true);
@@ -849,7 +867,11 @@ public class Principal extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel2.setBackground(new java.awt.Color(51, 51, 51));
         jLabel2.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("by Niko7even");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -864,7 +886,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 31, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2))
         );
 
@@ -873,15 +895,21 @@ public class Principal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2)
+                            .addComponent(jSeparator1))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -895,8 +923,8 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -907,7 +935,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1118,11 +1146,12 @@ public class Principal extends javax.swing.JFrame {
         
         //cambio de titulo
         jLabel1.setText("Modifing...");
-        jPanel1.setBackground(Color.orange);
-        jPanel3.setBackground(Color.orange);
-        jPanel4.setBackground(Color.orange);
-        jSeparator1.setBackground(Color.orange);
-        jSeparator2.setBackground(Color.orange);
+        jLabel1.setForeground((new Color(51,51,51)));
+        jPanel1.setBackground(Color.green);
+        jPanel3.setBackground(Color.green);
+        jPanel4.setBackground(Color.green);
+        jSeparator1.setBackground(Color.green);
+        jSeparator2.setBackground(Color.green);
     }//GEN-LAST:event_candadoActionPerformed
 
     private void bloquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloquearActionPerformed
@@ -1130,11 +1159,12 @@ public class Principal extends javax.swing.JFrame {
         estadoCandado = 0;
         candado.setVisible(true);
         jLabel1.setText("Positions");
-        jPanel1.setBackground(new Color(242, 242, 242));
-        jPanel3.setBackground(new Color(242, 242, 242));
-        jPanel4.setBackground(new Color(242, 242, 242));
-        jSeparator1.setBackground(new Color(242, 242, 242));
-        jSeparator2.setBackground(new Color(242, 242, 242));
+        jLabel1.setForeground((new Color(255,255,255)));
+        jPanel1.setBackground(new Color(51,51,51));
+        jPanel3.setBackground(new Color(51,51,51));
+        jPanel4.setBackground(new Color(51,51,51));
+        jSeparator1.setBackground(new Color(51,51,51));
+        jSeparator2.setBackground(new Color(51,51,51));
     }//GEN-LAST:event_bloquearActionPerformed
 /*============================================*/
 
