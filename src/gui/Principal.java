@@ -759,7 +759,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel8.setText("Open");
 
-        candado.setIcon(new javax.swing.ImageIcon("Z:\\YoProgramo\\Aprendiendo JAVA\\MisProyectosJAVA\\positionsBETA\\src\\img\\block.png")); // NOI18N
+        candado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/block.png"))); // NOI18N
         candado.setBorder(null);
         candado.setFocusCycleRoot(true);
         candado.addActionListener(new java.awt.event.ActionListener() {
@@ -768,7 +768,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        bloquear.setIcon(new javax.swing.ImageIcon("Z:\\YoProgramo\\Aprendiendo JAVA\\MisProyectosJAVA\\positionsBETA\\src\\img\\unlock.png")); // NOI18N
+        bloquear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/unlock.png"))); // NOI18N
         bloquear.setBorder(null);
         bloquear.setFocusCycleRoot(true);
         bloquear.addActionListener(new java.awt.event.ActionListener() {
@@ -786,9 +786,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
                 .addComponent(candado)
-                .addGap(77, 77, 77)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
