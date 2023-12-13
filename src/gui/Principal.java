@@ -777,7 +777,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel8.setText("Open");
 
         candado.setBackground(new java.awt.Color(51, 51, 51));
-        candado.setIcon(new javax.swing.ImageIcon("Z:\\YoProgramo\\Aprendiendo JAVA\\MisProyectosJAVA\\positionsBETA\\src\\img\\block.png")); // NOI18N
+        candado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/block.png"))); // NOI18N
         candado.setBorder(null);
         candado.setFocusCycleRoot(true);
         candado.addActionListener(new java.awt.event.ActionListener() {
@@ -786,7 +786,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        bloquear.setIcon(new javax.swing.ImageIcon("Z:\\YoProgramo\\Aprendiendo JAVA\\MisProyectosJAVA\\positionsBETA\\src\\img\\unlock.png")); // NOI18N
+        bloquear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/unlock.png"))); // NOI18N
         bloquear.setBorder(null);
         bloquear.setFocusCycleRoot(true);
         bloquear.addActionListener(new java.awt.event.ActionListener() {
@@ -805,8 +805,10 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bloquear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(candado)
-                .addGap(77, 77, 77)
+                .addGap(82, 82, 82)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -818,16 +820,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel8))
                 .addGap(22, 22, 22))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                    .addContainerGap(312, Short.MAX_VALUE)
-                    .addComponent(bloquear)
-                    .addGap(170, 170, 170)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
@@ -855,16 +852,12 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(jLabel8))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(candado)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 7, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                    .addContainerGap(64, Short.MAX_VALUE)
-                    .addComponent(bloquear)
-                    .addContainerGap()))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bloquear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
